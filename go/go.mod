@@ -12,8 +12,8 @@ require (
 )
 
 // 使用本地目录改写上方的github仓库
-replace github.com/bettersun/go-flutter-plugin/hello => ../go_plugin/hello
+replace github.com/bettersun/go-flutter-plugin/hello => ./plugin/hello
 
-replace github.com/bettersun/go-flutter-plugin/moist => ../go_plugin/moist
+replace github.com/bettersun/go-flutter-plugin/moist => ./plugin/moist
 
-replace github.com/bettersun/go-flutter-plugin/xlsx => ../go_plugin/xlsx
+replace github.com/bettersun/go-flutter-plugin/xlsx => ./plugin/xlsx

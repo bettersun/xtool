@@ -18,7 +18,7 @@ sudo hover run
 ```
 
 3.
-Mac
+Debug on Mac
 ```
 sudo hover build darwin --debug
 ```
