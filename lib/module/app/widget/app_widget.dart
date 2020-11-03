@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xtool/module/app/bloc/bloc.dart';
-import 'package:xtool/module/explorer/page/page.dart';
+import 'package:xtool/module/explorer/explorer_page.dart';
 
 /// APP相关组件
 class AppWidget {
@@ -10,8 +10,10 @@ class AppWidget {
 
   static AppWidget appWidgetUtil;
 
+  /// 单例模式
   static AppWidget instance() {
-    return appWidgetUtil ?? AppWidget();
+    appWidgetUtil ??= AppWidget();
+    return appWidgetUtil;
   }
 
   /// 标题栏的动作

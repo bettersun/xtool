@@ -1,10 +1,10 @@
 import '../bloc/bloc.dart';
-import '../view_model/view_model.dart';
+import '../view_model/vm.dart';
 
 /// 程序Service接口
 abstract class AppService {
   /// 初始化
-  Future<AppDoneState> load();
+  Future<AppDoneState> init();
 
   /// hello
   Future<AppDoneState> hello(AppView appView);

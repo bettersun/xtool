@@ -1,10 +1,10 @@
 import '../bloc/bloc.dart';
-import '../view_model/view_model.dart';
+import '../view_model/vm.dart';
 
 /// 程序Service接口
 abstract class ExplorerService {
   /// 初始化
-  Future<ExplorerDoneState> load();
+  Future<ExplorerDoneState> init();
 
   /// 浏览
   Future<ExplorerDoneState> explorer(ExplorerView explorerView);

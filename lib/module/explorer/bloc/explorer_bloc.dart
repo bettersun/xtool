@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kiwi/kiwi.dart';
-import 'package:xtool/module/explorer/service/explorer_service.dart';
 
+import '../service/explorer_service.dart';
 import 'bloc.dart';
 
 class ExplorerBloc extends Bloc<ExplorerEvent, ExplorerState> {
@@ -18,8 +18,8 @@ class ExplorerBloc extends Bloc<ExplorerEvent, ExplorerState> {
     final ExplorerService service = container<ExplorerService>();
 
     // 初始化
-    if (event is ExplorerLoadEvent) {
-      final ExplorerDoneState resultState = await service.load();
+    if (event is ExplorerInitEvent) {
+      final ExplorerDoneState resultState = await service.init();
       yield resultState;
     }
     // 浏览

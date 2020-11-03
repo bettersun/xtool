@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import 'view_model.dart';
+import 'vm.dart';
 
 /// 浏览View
 class ExplorerView extends Equatable {

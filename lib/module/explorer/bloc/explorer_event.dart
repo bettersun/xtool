@@ -1,14 +1,14 @@
-import '../view_model/view_model.dart';
+import '../view_model/vm.dart';
 
 /// 浏览Event
 abstract class ExplorerEvent {}
 
-// 加载Event
-class ExplorerLoadEvent extends ExplorerEvent {}
+/// 初始化Event
+class ExplorerInitEvent extends ExplorerEvent {}
 
-// 浏览Event
+/// 浏览Event
 class ExplorerExplorerEvent extends ExplorerEvent {
-  // 浏览View
+  /// 浏览View
   final ExplorerView view;
 
   ExplorerExplorerEvent({this.view});
@@ -17,9 +17,9 @@ class ExplorerExplorerEvent extends ExplorerEvent {
   String toString() => 'ExplorerExplorerEvent';
 }
 
-// 展开收起Event
+/// 展开收起Event
 class ExplorerExpandEvent extends ExplorerEvent {
-  // 树节点View
+  /// 树节点View
   final TreeNodeView nodeView;
 
   ExplorerExpandEvent({this.nodeView});
@@ -28,9 +28,9 @@ class ExplorerExpandEvent extends ExplorerEvent {
   String toString() => 'ExplorerExpandEvent';
 }
 
-// 选中反选Event
+/// 选中反选Event
 class ExplorerSelectEvent extends ExplorerEvent {
-  // 树节点View
+  /// 树节点View
   final TreeNodeView nodeView;
 
   ExplorerSelectEvent({this.nodeView});

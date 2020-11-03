@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'bloc/bloc.dart';
-import 'page/home_page.dart';
+import 'module/app/app_page.dart';
+import 'module/app/bloc/bloc.dart';
+import 'module/search/search_page.dart';
 
 class App extends StatelessWidget {
   @override
@@ -15,8 +16,9 @@ class App extends StatelessWidget {
             theme: theme,
             home: BlocProvider(
               // 执行子组件的初始加载方法
-              create: (_) => AppBloc()..add(AppEvent.load),
-              child: HomePage(),
+              create: (_) => AppBloc(),
+              // child: AppPage(),
+              child: SearchPage(),
             ),
           );
         },

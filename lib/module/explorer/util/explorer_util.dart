@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xtool/plugin/go/plugin.dart';
 import 'package:uuid/uuid.dart';
 
-import '../view_model/view_model.dart';
+import '../view_model/vm.dart';
 
 /// 浏览工具类
 class ExplorerUtil {

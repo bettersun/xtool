@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../view_model/view_model.dart';
+import '../view_model/vm.dart';
 
 /// 程序State
 abstract class AppState extends Equatable {

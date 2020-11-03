@@ -20,7 +20,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
 
     // 初始化
     if (event == AppEvent.load) {
-      final AppDoneState resultState = await service.load();
+      final AppDoneState resultState = await service.init();
       yield resultState;
     }
     // hello

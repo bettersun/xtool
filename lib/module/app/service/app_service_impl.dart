@@ -2,14 +2,14 @@ import 'package:xtool/plugin/go/plugin.dart';
 import 'package:shared_preferences_windows/shared_preferences_windows.dart';
 
 import '../bloc/bloc.dart';
-import '../view_model/view_model.dart';
+import '../view_model/vm.dart';
 
 import 'app_service.dart';
 
 /// 程序Service实现
 class AppServiceImpl extends AppService {
   @override
-  Future<AppDoneState> load() async {
+  Future<AppDoneState> init() async {
     const AppView view = AppView(title: 'bettersun');
 
     return AppDoneState(view: view);

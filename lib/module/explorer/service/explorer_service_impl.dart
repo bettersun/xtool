@@ -3,14 +3,14 @@ import 'package:xtool/plugin/go/plugin.dart';
 
 import '../bloc/bloc.dart';
 import '../util/util.dart';
-import '../view_model/view_model.dart';
+import '../view_model/vm.dart';
 
 import 'explorer_service.dart';
 
 /// 浏览Service实现
 class ExplorerServiceImpl extends ExplorerService {
   @override
-  Future<ExplorerDoneState> load() async {
+  Future<ExplorerDoneState> init() async {
     final List<String> p = [];
     // p.add('E:\\BS\\Mac');
     // p.add('E:\\BS\\Test');
