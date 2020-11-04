@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ConditionPanel extends StatelessWidget {
-  const ConditionPanel();
-
   @override
   Widget build(BuildContext context) {
+    const double inputWidth = 500;
+
     return Container(
-      color: Colors.lightGreen,
-      height: 320,
+      color: Colors.orangeAccent,
+      height: 220,
       alignment: Alignment.center,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
@@ -20,24 +20,48 @@ class ConditionPanel extends StatelessWidget {
                 Row(
                   children: [
                     label('目录'),
-                    SizedBox(width: 600, child: TextField()),
+                    SizedBox(width: inputWidth, child: TextField()),
                   ],
                 ),
                 Row(
                   children: [
-                    Checkbox(value: true, onChanged: (val) {}),
-                    Text('搜索子目录'),
+                    label('关键字'),
+                    SizedBox(width: inputWidth, child: TextField()),
                   ],
                 ),
               ],
             ),
             //
             Row(
+              children: [],
+            ),
+            //
+            Row(
               children: [
                 Row(
                   children: [
-                    label('关键字'),
-                    SizedBox(width: 600, child: TextField()),
+                    label('文件类型'),
+                    SizedBox(width: inputWidth, child: TextField()),
+                  ],
+                ),
+                IconButton(
+                  icon: Icon(Icons.keyboard_arrow_down),
+                ),
+                DropdownButton<String>(
+                  value: 'One',
+                  onChanged: (String newValue) {},
+                  items: <String>['One', 'Two', 'Free', 'Four']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+                Row(
+                  children: [
+                    Checkbox(value: true, onChanged: (val) {}),
+                    Text('搜索子目录'),
                   ],
                 ),
                 Row(
@@ -46,69 +70,58 @@ class ConditionPanel extends StatelessWidget {
                     Text('区分大小写'),
                   ],
                 ),
-              ],
-            ),
-            //
-            Row(
-              children: [
-                Row(
-                  children: [
-                    label('文件类型'),
-                    SizedBox(width: 600, child: TextField()),
-                  ],
-                ),
                 Row(
                   children: [
                     Checkbox(value: true, onChanged: (val) {}),
-                    Text('搜索模式'),
+                    Text('忽略选项'),
                   ],
                 ),
               ],
             ),
-            //
+
             Row(
               children: [
                 Row(
                   children: [
                     label('忽略目录'),
-                    SizedBox(width: 600, child: TextField()),
+                    SizedBox(width: inputWidth, child: TextField()),
                   ],
                 ),
-                IconButton(
-                  icon: Icon(
-                    Icons.arrow_drop_down_circle,
-                    color: Theme.of(context).accentColor,
-                  ),
-                ),
-              ],
-            ),
-            //
-            Row(
-              children: [
                 Row(
                   children: [
                     label('忽略关键字'),
-                    SizedBox(width: 600, child: TextField()),
+                    SizedBox(width: inputWidth, child: TextField()),
                   ],
                 ),
               ],
             ),
             //
-            Row(
-              children: [
-                Row(
-                  children: [
-                    label('忽略类型'),
-                    SizedBox(width: 600, child: TextField()),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(value: true, onChanged: (val) {}),
-                    Text('忽略模式'),
-                  ],
-                ),
-              ],
+            Visibility(
+              visible: true,
+              child: Row(
+                children: [
+                  Row(
+                    children: [
+                      label('忽略类型'),
+                      SizedBox(width: inputWidth, child: TextField()),
+                    ],
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.keyboard_arrow_down),
+                  ),
+                  DropdownButton<String>(
+                    value: 'One',
+                    onChanged: (String newValue) {},
+                    items: <String>['One', 'Two', 'Free', 'Four']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -118,8 +131,8 @@ class ConditionPanel extends StatelessWidget {
 }
 
 Widget label(String labelText) {
-  const labelPadding = 4.0;
-  const labelWidth = 80.0;
+  const double labelPadding = 4.0;
+  const double labelWidth = 80.0;
 
   return Container(
     padding: EdgeInsets.only(left: labelPadding, right: labelPadding),

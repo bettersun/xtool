@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 
-import 'explorer.dart';
+import 'model/model.dart';
 
 /// moist插件
 class MoistPlugin {
@@ -16,5 +16,14 @@ class MoistPlugin {
     final TreeNode tree = TreeNode.fromJson(m);
     // print(m);
     return tree;
+  }
+
+  // 搜索
+  static Future<SearchResult> search(SearchOption option) async {
+    final Map m = await _channel.invokeMethod('search', option.toJson());
+
+    final SearchResult result = SearchResult.fromJson(m);
+    // print(m);
+    return result;
   }
 }

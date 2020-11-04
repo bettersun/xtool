@@ -60,6 +60,12 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       final AppDoneState resultState = await service.explorer(nowState.view);
       yield resultState;
     }
+    // 搜索
+    if (event == AppEvent.search) {
+      final AppDoneState nowState = state as AppDoneState;
+      final AppDoneState resultState = await service.search(nowState.view);
+      yield resultState;
+    }
   }
 
   @override

@@ -97,6 +97,14 @@ class AppWidget {
             },
           ),
         ),
+        // 搜索
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 5.0),
+          child: FloatingActionButton(
+              heroTag: 'search',
+              child: const Icon(Icons.search),
+              onPressed: () => context.bloc<AppBloc>().add(AppEvent.search)),
+        ),
       ],
     );
   }

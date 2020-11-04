@@ -14,4 +14,6 @@ enum AppEvent {
   openFiles,
   // 浏览(调用moist插件的浏览方法)
   explorer,
+  // 搜索
+  search,
 }

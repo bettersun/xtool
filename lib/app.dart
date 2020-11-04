@@ -17,8 +17,8 @@ class App extends StatelessWidget {
             home: BlocProvider(
               // 执行子组件的初始加载方法
               create: (_) => AppBloc(),
-              // child: AppPage(),
-              child: SearchPage(),
+              child: AppPage(),
+              // child: SearchPage(),
             ),
           );
         },

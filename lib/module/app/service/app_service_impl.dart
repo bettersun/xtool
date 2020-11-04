@@ -109,4 +109,39 @@ class AppServiceImpl extends AppService {
     final AppView view = appView.copyWith(info: '搜索执行完成(调用moist插件的explorer方法)');
     return AppDoneState(view: view);
   }
+
+  @override
+  Future<AppDoneState> search(AppView appView) async {
+    final List<String> p = [];
+    p.add('E:/BS/Test');
+
+    final List<String> namePart = [];
+    namePart.add('1');
+
+    final List<String> ip = [];
+    ip.add('');
+
+    final List<String> iFile = [];
+    iFile.add('');
+
+    final SearchOption option = SearchOption();
+    option.rootPath = p;
+    option.searchSubPath = true;
+    option.matchCase = false;
+    option.fileNamePart = namePart;
+    option.fileType = [''];
+    option.pattern = '1';
+
+    option.ignorePath = [];
+    option.ignoreFileNamePart = [];
+    option.ignoreType = [];
+    option.ignorePattern = '';
+
+    // 调用插件方法
+    final SearchResult result = await MoistPlugin.search(option);
+    print(result.count);
+
+    final AppView view = appView.copyWith(info: '搜索执行完成(调用moist插件的search方法)');
+    return AppDoneState(view: view);
+  }
 }

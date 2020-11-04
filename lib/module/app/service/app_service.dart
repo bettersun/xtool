@@ -23,4 +23,7 @@ abstract class AppService {
 
   /// 浏览
   Future<AppDoneState> explorer(AppView appView);
+
+  /// 搜索
+  Future<AppDoneState> search(AppView appView);
 }
