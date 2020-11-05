@@ -1,5 +1,5 @@
 /// 搜索模式(忽略模式)
-class SearchConst {
+class SearchOptionConst {
 //   0 ： 默认
 //   1 ： 包含
 //   2 ： 相等
@@ -14,19 +14,40 @@ class SearchConst {
   static const PatternRegexp = '5';
 }
 
+/// 搜索选项
 class SearchOption {
+  /// 目标根目录
   List<String> rootPath;
+
+  /// 搜索子目录
   bool searchSubPath;
+
+  /// 区分大小写
   bool matchCase;
+
+  /// 目标文件名关键字
   List<String> fileNamePart;
+
+  /// 目标文件类型
   List<String> fileType;
+
+  /// 搜索模式
   String pattern;
 
+  /// 忽略目录
   List<String> ignorePath;
+
+  /// 忽略文件名关键字
   List<String> ignoreFileNamePart;
+
+  /// 忽略文件类型
   List<String> ignoreType;
+
+  /// 忽略模式
   String ignorePattern;
-  // bool showDetail;
+
+  /// 是否显示文件详细信息标志
+  bool showDetail;
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
@@ -41,6 +62,9 @@ class SearchOption {
     data['ignoreFileNamePart'] = ignoreFileNamePart;
     data['ignoreType'] = ignoreType;
     data['ignorePattern'] = ignorePattern;
+
+    data['showDetail'] = showDetail;
+
     return data;
   }
 }
@@ -55,7 +79,7 @@ class SearchResult {
   double count;
   // 错误信息
   List<String> errInfo;
-  // 附加信息
+  // 其它信息
   List<String> exInfo;
 
   SearchResult.fromJson(Map<dynamic, dynamic> json) {
@@ -94,7 +118,7 @@ class FileInfo {
   double size;
   // 文件模式
   double mode;
-  // 最终修改时间
+  // 更新时间
   String modTime;
 
   FileInfo.fromJson(Map<dynamic, dynamic> json) {

@@ -1,3 +1,3 @@
 class ThemeConst {
-  static const double sideWidth = 8.0;
+  static const double sideWidth = 4.0;
 }

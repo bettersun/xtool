@@ -163,7 +163,7 @@ class _ExplorerPageState extends State<ExplorerPage> {
           }
 
           return Scaffold(
-            body: Center(child: Text('NULL')),
+            body: Center(child: Text('Explorer')),
           );
         }));
   }

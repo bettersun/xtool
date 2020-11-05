@@ -1,4 +1,5 @@
-import 'package:xtool/module/search/view_model/search_view.dart';
+import '../bloc/bloc.dart';
+import '../view_model/search_view.dart';
 
 /// 程序Service接口
 abstract class SearchService {
@@ -6,5 +7,11 @@ abstract class SearchService {
   Future<SearchView> init();
 
   /// 搜索
-  Future<SearchView> search(SearchView searchView);
+  Future<SearchView> search(SearchView view);
+
+  /// 改变值
+  SearchView changeValue(SearchView view, SearchChangeValueEvent event);
+
+  /// 切换结果
+  SearchView toggleResult(SearchView view, SearchToggleResultEvent event);
 }

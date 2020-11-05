@@ -6,6 +6,7 @@ import '../../common/const/const.dart';
 import 'bloc/bloc.dart';
 import 'widget/widget.dart';
 
+/// 搜索画面
 class SearchPage extends StatefulWidget {
   @override
   _SearchPageState createState() {
@@ -13,14 +14,16 @@ class SearchPage extends StatefulWidget {
   }
 }
 
+/// 搜索画面State
 class _SearchPageState extends State<SearchPage> {
-  final SearchBloc _searchBloc = SearchBloc();
+  SearchBloc _searchBloc;
 
   @override
   void initState() {
     super.initState();
 
-    // 浏览画面
+    _searchBloc = SearchBloc();
+    // 初始化
     _searchBloc.add(SearchInitEvent());
   }
 
@@ -29,36 +32,37 @@ class _SearchPageState extends State<SearchPage> {
     return BlocProvider(
       create: (BuildContext context) => _searchBloc,
       child: BlocBuilder<SearchBloc, SearchState>(builder: (context, state) {
-        // 构建组件
-        return Scaffold(
-          body: Container(
-            padding: EdgeInsets.all(ThemeConst.sideWidth),
-            color: Theme.of(context).bannerTheme.backgroundColor,
-            child: Column(
-              children: [
-                Container(
-                  color: Colors.cyan,
-                  height: 300,
-                  // width: double.infinity,
-                  child: ConditionPanel(),
-                ),
-                Container(
-                  color: Colors.amber,
-                  height: 20,
-                  // width: double.infinity,
-                  child: Text('搜索Tab'),
-                ),
-                Expanded(
-                  child: Container(
-                    color: Theme.of(context).cardTheme.color,
-                    height: 300,
-                    // width: double.infinity,
-                    child: Text('搜索结果'),
+        // 加载完成后，渲染
+        if (state is SearchDoneState) {
+          // 构建组件
+          return Scaffold(
+            body: Container(
+              padding: EdgeInsets.all(ThemeConst.sideWidth),
+              color: Theme.of(context).bannerTheme.backgroundColor,
+              child: Column(
+                children: [
+                  // 搜索选项面板
+                  ConditionPanel(optionView: state.view.optionView),
+                  // Tab面板
+                  TabPanel(
+                    resultView: state.view.resultView,
+                    resultFlag: state.view.resultFlag,
                   ),
-                )
-              ],
+                  // 搜索结果面板
+                  Expanded(
+                    child: ResultPanel(
+                      resultView: state.view.resultView,
+                      resultFlag: state.view.resultFlag,
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
+          );
+        }
+
+        return Scaffold(
+          body: Center(child: Text('搜索')),
         );
       }),
     );
