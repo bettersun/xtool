@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:xtool/framework/widget/widget.dart';
 
 import '../../common/const/const.dart';
 
@@ -29,6 +30,25 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
+    // FAB
+    final fabs = Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: <Widget>[
+        // 返回
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 5.0),
+          child: FloatingActionButton(
+            heroTag: 'b2',
+            child: const Icon(Icons.assignment_return),
+            onPressed: () async {
+              Navigator.maybePop(context);
+            },
+          ),
+        ),
+      ],
+    );
+
     return BlocProvider(
       create: (BuildContext context) => _searchBloc,
       child: BlocBuilder<SearchBloc, SearchState>(builder: (context, state) {
@@ -58,12 +78,11 @@ class _SearchPageState extends State<SearchPage> {
                 ],
               ),
             ),
+            floatingActionButton: fabs,
           );
         }
 
-        return Scaffold(
-          body: Center(child: Text('搜索')),
-        );
+        return BlankScaffold();
       }),
     );
   }

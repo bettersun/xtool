@@ -19,7 +19,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     final AppService service = container<AppService>();
 
     // 初始化
-    if (event == AppEvent.load) {
+    if (event == AppEvent.init) {
       final AppDoneState resultState = await service.init();
       yield resultState;
     }

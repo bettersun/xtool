@@ -1,16 +1,21 @@
 /// 搜索模式(忽略模式)
 class SearchOptionConst {
-//   0 ： 默认
-//   1 ： 包含
-//   2 ： 相等
-//   3 ： 以开头
-//   4 ： 以结尾
-//   5 ： 正则表达式
+  /// 0 ： 默认
   static const PatternDefault = '0';
+
+  /// 1 ： 包含
   static const PatternInclude = '1';
+
+  /// 2 ： 相等
   static const PatternEqual = '2';
+
+  /// 3 ： 以开头
   static const PatternPrefix = '3';
+
+  /// 4 ： 以结尾
   static const PatternSuffix = '4';
+
+  /// 5 ： 正则表达式
   static const PatternRegexp = '5';
 }
 

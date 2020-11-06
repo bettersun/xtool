@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../common/const/const.dart';
+import 'package:xtool/common/const/const.dart';
+import 'package:xtool/framework/framework.dart';
 
 import 'bloc/bloc.dart';
 import 'util/util.dart';
@@ -162,9 +162,7 @@ class _ExplorerPageState extends State<ExplorerPage> {
             );
           }
 
-          return Scaffold(
-            body: Center(child: Text('Explorer')),
-          );
+          return BlankScaffold();
         }));
   }
 }

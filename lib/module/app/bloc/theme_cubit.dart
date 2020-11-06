@@ -1,4 +1,3 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +11,7 @@ class ThemeCubit extends Cubit<ThemeData> {
       foregroundColor: Colors.white,
     ),
     brightness: Brightness.light,
-    primaryColor: Colors.greenAccent,
+    primaryColor: Colors.blue[300],
   );
 
   // 黑暗主题

@@ -1,7 +1,7 @@
 /// 事件
 enum AppEvent {
-  // 初始加载
-  load,
+  // 初始化
+  init,
   // hello(调用hello插件的hello方法)
   hello,
   // message(调用hello插件的message方法)
