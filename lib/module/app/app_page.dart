@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xtool/framework/widget/widget.dart';
-import 'package:xtool/module/app/widget/widget.dart';
+import 'package:xtool/plugin/go/plugin.dart';
 
 import 'bloc/bloc.dart';
-import 'widget/app_widget.dart';
+import 'widget/widget.dart';
 
 class AppPage extends StatefulWidget {
   @override
@@ -18,6 +19,13 @@ class _AppPageState extends State<AppPage> {
   void initState() {
     super.initState();
     context.bloc<AppBloc>().add(AppEvent.init);
+
+    // 监听Go发过来的消息
+    HelloPlugin.channel.setMethodCallHandler((MethodCall methodCall) async {
+      if (methodCall.method == 'interval') {
+        context.bloc<AppBloc>().add(AppEvent.refresh);
+      }
+    });
   }
 
   @override

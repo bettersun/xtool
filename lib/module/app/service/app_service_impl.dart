@@ -20,7 +20,8 @@ class AppServiceImpl extends AppService {
       ActionInfo(id: 4, name: '浏览画面'),
       ActionInfo(id: 5, name: '搜索(插件)'),
       ActionInfo(id: 6, name: '搜索画面'),
-      ActionInfo(id: 7, name: '...'),
+      ActionInfo(id: 7, name: '代理画面'),
+      ActionInfo(id: 8, name: '...'),
     ];
 
     const AppView view = AppView(title: 'bettersun', actions: actions);
@@ -156,6 +157,24 @@ class AppServiceImpl extends AppService {
     print(result.count);
 
     final AppView view = appView.copyWith(info: '搜索执行完成(调用moist插件的search方法)');
+    return AppDoneState(view: view);
+  }
+
+  @override
+  Future<AppDoneState> refresh(AppView appView) async {
+    final dt = DateTime.now();
+
+    final String year = dt.year.toString();
+    final String month = dt.month.toString().padLeft(2, '0');
+    final String day = dt.day.toString().padLeft(2, '0');
+    final String hour = dt.hour.toString().padLeft(2, '0');
+    final String minute = dt.minute.toString().padLeft(2, '0');
+    final String second = dt.second.toString().padLeft(2, '0');
+
+    final String sdt = '$year/$month/$day $hour:$minute:$second';
+    print(sdt);
+
+    final AppView view = appView.copyWith(title: 'bettersun    ' + sdt);
     return AppDoneState(view: view);
   }
 }

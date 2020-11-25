@@ -12,9 +12,11 @@ import (
 // go-flutter插件需要声明包名和函数名
 // dart代码中调用时需要指定相应的包名和函数名
 const (
-	channelName = "bettersun.go-flutter.plugin.moist"
-	explorer    = "explorer"
-	search      = "search"
+	channelName        = "bettersun.go-flutter.plugin.moist"
+	explorer           = "explorer"
+	search             = "search"
+	proxyRunServer     = "proxyRunServer"
+	proxyRestartServer = "proxyRestartServer"
 )
 
 /// 声明插件结构体

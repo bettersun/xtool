@@ -16,4 +16,6 @@ enum AppEvent {
   explorer,
   // 搜索
   search,
+  // 刷新
+  refresh,
 }

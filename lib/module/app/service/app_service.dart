@@ -26,4 +26,7 @@ abstract class AppService {
 
   /// 搜索
   Future<AppDoneState> search(AppView appView);
+
+  /// 刷新
+  Future<AppDoneState> refresh(AppView appView);
 }

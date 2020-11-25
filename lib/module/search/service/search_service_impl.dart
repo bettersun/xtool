@@ -6,7 +6,7 @@ import '../view_model/vm.dart';
 
 import 'search_service.dart';
 
-/// 浏览Service实现
+/// 搜索Service实现
 class SearchServiceImpl extends SearchService {
   /// 初始化
   @override

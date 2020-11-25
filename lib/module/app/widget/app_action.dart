@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:xtool/common/const/const.dart';
 import 'package:xtool/module/explorer/explorer_page.dart';
+import 'package:xtool/module/proxy/proxy_page.dart';
 import 'package:xtool/module/search/search_page.dart';
 
 import '../bloc/bloc.dart';
@@ -87,6 +88,14 @@ class _AppActionState extends State<AppAction> {
           await Navigator.of(context).push<dynamic>(
             MaterialPageRoute<dynamic>(builder: (_) {
               return SearchPage();
+            }),
+          );
+        }
+        if (item.id == 7) {
+          // 代理画面
+          await Navigator.of(context).push<dynamic>(
+            MaterialPageRoute<dynamic>(builder: (_) {
+              return ProxyPage();
             }),
           );
         }

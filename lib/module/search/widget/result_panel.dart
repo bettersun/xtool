@@ -54,6 +54,8 @@ class ResultPanel extends StatelessWidget {
       dateRows.add(DataRow(
         cells: [
           // 文件名
+          DataCell(Text((i + 1).toString())),
+          // 文件名
           DataCell(Text(fileInfo[i].fileName ?? '')),
           // 文件类型
           DataCell(Text(fileInfo[i].fileType ?? '')),
@@ -70,6 +72,8 @@ class ResultPanel extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: DataTable(
         columns: const [
+          // #
+          DataColumn(label: Text('#')),
           // 文件名
           DataColumn(label: Text('文件名')),
           // 文件类型

@@ -1,7 +1,7 @@
 import '../bloc/bloc.dart';
 import '../view_model/search_view.dart';
 
-/// 程序Service接口
+/// 搜索Service接口
 abstract class SearchService {
   /// 初始化
   Future<SearchView> init();

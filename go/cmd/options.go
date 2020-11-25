@@ -9,6 +9,9 @@ import (
 	// go.mod中引入的moist插件URI
 	"github.com/bettersun/go-flutter-plugin/moist"
 
+	// go.mod中引入的moist的proxy插件URI
+	"github.com/bettersun/go-flutter-plugin/moist/proxy"
+
 	// go.mod中引入的xlsx插件URI
 	"github.com/bettersun/go-flutter-plugin/xlsx"
 )
@@ -20,4 +23,5 @@ var options = []flutter.Option{
 	flutter.AddPlugin(hello.HelloPlugin{}),
 	flutter.AddPlugin(moist.MoistPlugin{}),
 	flutter.AddPlugin(xlsx.XlsxPlugin{}),
+	flutter.AddPlugin(proxy.ProxyPlugin{}),
 }

@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kiwi/kiwi.dart';
+import 'package:xtool/plugin/go/plugin.dart';
 
 import '../service/app_service.dart';
 
@@ -64,6 +66,12 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     if (event == AppEvent.search) {
       final AppDoneState nowState = state as AppDoneState;
       final AppDoneState resultState = await service.search(nowState.view);
+      yield resultState;
+    }
+    // 刷新
+    if (event == AppEvent.refresh) {
+      final AppDoneState nowState = state as AppDoneState;
+      final AppDoneState resultState = await service.refresh(nowState.view);
       yield resultState;
     }
   }
