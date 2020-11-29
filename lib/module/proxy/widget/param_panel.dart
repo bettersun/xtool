@@ -6,12 +6,12 @@ import '../bloc/bloc.dart';
 import '../const/const.dart';
 import '../view_model/vm.dart';
 
-/// 搜索条件面板
+/// 代理参数面板
 class ParamPanel extends StatefulWidget {
-  /// 搜索选项View
-  final ProxyView proxyView;
+  /// 代理View
+  final ProxyInfoView proxyInfoView;
 
-  const ParamPanel({this.proxyView});
+  const ParamPanel({this.proxyInfoView});
 
   @override
   _ParamPanelState createState() {
@@ -35,10 +35,10 @@ class _ParamPanelState extends State<ParamPanel> {
     _searchBloc = BlocProvider.of<ProxyBloc>(context);
     // 目录
     _targetHostPathCtrlr = TextEditingController();
-    _targetHostPathCtrlr.text = widget.proxyView.proxyInfo.targetHost;
+    _targetHostPathCtrlr.text = widget.proxyInfoView.targetHost;
     // 关键字
     _baseUrlPartCtrlr = TextEditingController();
-    _baseUrlPartCtrlr.text = widget.proxyView.proxyInfo.baseUrl;
+    _baseUrlPartCtrlr.text = widget.proxyInfoView.baseUrl;
   }
 
   @override
@@ -48,10 +48,12 @@ class _ParamPanelState extends State<ParamPanel> {
 
     return Container(
       color: Colors.blue[200],
+//      margin: EdgeInsets.all(ThemeConst.sideWidth),
       padding: EdgeInsets.all(ThemeConst.sideWidth),
       alignment: Alignment.center,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
+        padding: EdgeInsets.only(bottom: ThemeConst.sideWidth),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -63,9 +65,8 @@ class _ParamPanelState extends State<ParamPanel> {
                   child: TextField(
                     controller: _targetHostPathCtrlr,
                     onChanged: (value) {
-                      if (value != widget.proxyView.proxyInfo.targetHost) {
-                        _searchBloc.add(ProxyChangeValueEvent(
-                            itemKey: ProxyConst.keyTargetHost, newVal: value));
+                      if (value != widget.proxyInfoView.targetHost) {
+                        _searchBloc.add(ProxyChangeValueEvent(itemKey: ProxyConst.keyTargetHost, newVal: value));
                       }
                     },
                   ),
@@ -84,9 +85,8 @@ class _ParamPanelState extends State<ParamPanel> {
                   child: TextField(
                     controller: _baseUrlPartCtrlr,
                     onChanged: (value) {
-                      if (value != widget.proxyView.proxyInfo.baseUrl) {
-                        _searchBloc.add(ProxyChangeValueEvent(
-                            itemKey: ProxyConst.keyRootUrl, newVal: value));
+                      if (value != widget.proxyInfoView.baseUrl) {
+                        _searchBloc.add(ProxyChangeValueEvent(itemKey: ProxyConst.keyRootUrl, newVal: value));
                       }
                     },
                   ),

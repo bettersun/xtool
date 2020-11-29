@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xtool/framework/widget/widget.dart';
 
 import '../../common/const/const.dart';
-
 import 'bloc/bloc.dart';
 import 'widget/widget.dart';
 
@@ -62,12 +61,12 @@ class _ProxyPageState extends State<ProxyPage> {
               child: Column(
                 children: [
                   // 搜索选项面板
-                  ParamPanel(proxyView: state.view),
+                  ParamPanel(proxyInfoView: state.view),
                   // Tab面板
-                  OperatePanel(proxyView: state.view),
+                  OperatePanel(proxyInfoView: state.view),
                   // 搜索结果面板
                   Expanded(
-                    child: ResultPanel(proxyView: state.view),
+                    child: DetailPanel(proxyInfoView: state.view),
                   )
                 ],
               ),

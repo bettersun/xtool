@@ -1,34 +1,62 @@
 import 'package:xtool/plugin/go/plugin.dart';
 
 import '../view_model/vm.dart';
-
 import 'proxy_service.dart';
 
 /// 代理Service实现
 class ProxyServiceImpl extends ProxyService {
   @override
-  Future<ProxyView> init() async {
-    return ProxyView(proxyInfo: ProxyInfo());
+  Future<ProxyInfoView> init() async {
+    final List<ProxyUrlView> urlViews = [];
+
+    final ProxyUrlView urlView1 = ProxyUrlView(
+      url: '/helo',
+      useProxy: true,
+      responseJson: '/json/hello.json',
+    );
+    final ProxyUrlView urlView2 = ProxyUrlView(
+      url: '/goodbye',
+      useProxy: false,
+      responseJson: '/json/goodbye.json',
+    );
+    final ProxyUrlView urlView3 = ProxyUrlView(
+      url: '/welcome',
+      useProxy: true,
+      responseJson: '/json/welcome.json',
+    );
+
+    urlViews.add(urlView1);
+    urlViews.add(urlView2);
+    urlViews.add(urlView3);
+
+    const String targetHost = 'http://127.0.0.1:8002';
+    const String baseUrl = '/bettersun';
+
+    return ProxyInfoView(
+      targetHost: targetHost,
+      baseUrl: baseUrl,
+      proxyUrlViews: urlViews,
+    );
   }
 
   @override
-  Future<ProxyView> run() async {
+  Future<ProxyInfoView> run() async {
     await ProxyPlugin.runServer();
 
-    return ProxyView(proxyInfo: ProxyInfo());
+    return ProxyInfoView();
   }
 
   @override
-  Future<ProxyView> reload() async {
+  Future<ProxyInfoView> reload() async {
     await ProxyPlugin.reload();
 
-    return ProxyView(proxyInfo: ProxyInfo());
+    return ProxyInfoView();
   }
 
   @override
-  Future<ProxyView> close() async {
+  Future<ProxyInfoView> close() async {
     await ProxyPlugin.runServer();
 
-    return ProxyView(proxyInfo: ProxyInfo());
+    return ProxyInfoView();
   }
 }

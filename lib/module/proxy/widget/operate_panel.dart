@@ -7,10 +7,10 @@ import '../view_model/vm.dart';
 
 /// 操作面板
 class OperatePanel extends StatelessWidget {
-  /// 搜索结果View
-  final ProxyView proxyView;
+  /// 代理View
+  final ProxyInfoView proxyInfoView;
 
-  const OperatePanel({this.proxyView});
+  const OperatePanel({this.proxyInfoView});
 
   @override
   Widget build(BuildContext context) {

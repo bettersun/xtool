@@ -21,17 +21,17 @@ class ProxyBloc extends Bloc<ProxyEvent, ProxyState> {
 
     // 初始化
     if (event is ProxyInitEvent) {
-      final ProxyView view = await service.init();
+      final ProxyInfoView view = await service.init();
       yield ProxyDoneState(view: view);
     }
 
     if (event is ProxyRunEvent) {
-      final ProxyView view = await service.run();
+      final ProxyInfoView view = await service.run();
       yield ProxyDoneState(view: view);
     }
 
     if (event is ProxyReloadEvent) {
-      final ProxyView view = await service.reload();
+      final ProxyInfoView view = await service.reload();
       yield ProxyDoneState(view: view);
     }
   }

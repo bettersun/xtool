@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:xtool/plugin/go/moist/model/model.dart';
 
 import '../view_model/vm.dart';
+import 'widget.dart';
 
-/// 搜索结果面板
-class ResultPanel extends StatelessWidget {
-  /// 搜索结果View
-  final ProxyView proxyView;
+/// 代理详细面板
+class DetailPanel extends StatelessWidget {
+  /// 代理View
+  final ProxyInfoView proxyInfoView;
 
-  const ResultPanel({this.proxyView});
+  const DetailPanel({this.proxyInfoView});
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +18,7 @@ class ResultPanel extends StatelessWidget {
     // 详细信息
     result = SingleChildScrollView(
       child: Column(
-        children: [
-          SingleChildScrollView(
-            child: buildDataTable(proxyView.proxyInfo.proxyUrls),
-          ),
-        ],
+        children: buildUrlInfoList(),
       ),
     );
 
@@ -30,6 +27,19 @@ class ResultPanel extends StatelessWidget {
       width: double.infinity,
       child: result,
     );
+  }
+
+  List<Widget> buildUrlInfoList() {
+    final List<UrlInfo> dateRows = [];
+    for (int i = 0; i < proxyInfoView.proxyUrlViews.length; i++) {
+      //
+      dateRows.add(UrlInfo(
+        index: i,
+        proxyUrlView: proxyInfoView.proxyUrlViews[i],
+      ));
+    }
+
+    return dateRows;
   }
 
   /// 构建详细信息DataTable

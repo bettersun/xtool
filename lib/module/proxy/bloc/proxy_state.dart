@@ -14,7 +14,7 @@ class ProxyInitState extends ProxyState {}
 /// 完成State
 class ProxyDoneState extends ProxyState {
   /// 代理View
-  final ProxyView view;
+  final ProxyInfoView view;
 
   ProxyDoneState({this.view});
 
