@@ -8,6 +8,15 @@ class ProxyPlugin {
   static const _channel =
       MethodChannel('bettersun.go-flutter.plugin.moist.proxy');
 
+  // 重新加载运行时代理信息
+  static Future<Map> loadProxyInfo() async {
+    print('loadProxyInfo');
+    final Map m = await _channel.invokeMethod('loadProxyInfo');
+
+    print(m);
+    return m;
+  }
+
   // 运行服务
   static Future<Map> runServer() async {
     print('runServer');

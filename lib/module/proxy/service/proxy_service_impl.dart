@@ -7,6 +7,12 @@ import 'proxy_service.dart';
 class ProxyServiceImpl extends ProxyService {
   @override
   Future<ProxyInfoView> init() async {
+    // final Map m = await ProxyPlugin.loadProxyInfo();
+
+    // final ProxyInfo proxyInfo = ProxyInfo.fromJson(m);
+    // print('await ProxyPlugin.loadProxyInfo()');
+    // print(proxyInfo);
+
     final List<ProxyUrlView> urlViews = [];
 
     final ProxyUrlView urlView1 = ProxyUrlView(

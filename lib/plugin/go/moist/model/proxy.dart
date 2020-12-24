@@ -1,19 +1,16 @@
 /// 代理信息
 class ProxyInfo {
   /// 目标主机
-  final String targetHost;
+  String targetHost;
 
   /// 根Url
-  final String baseUrl;
+  String baseUrl;
 
   /// 代理URL信息
-  final List<ProxyUrl> proxyUrls;
+  List<ProxyUrl> proxyUrls;
 
-  const ProxyInfo({
-    this.targetHost = '',
-    this.baseUrl = '',
-    this.proxyUrls = const [],
-  });
+  ProxyInfo(
+      {this.targetHost = '', this.baseUrl = '', this.proxyUrls = const []});
 
   ProxyInfo copyWith({
     String targetHost,
@@ -26,20 +23,31 @@ class ProxyInfo {
       proxyUrls: proxyUrls ?? this.proxyUrls,
     );
   }
+
+  ProxyInfo.fromJson(Map<dynamic, dynamic> json) {
+    targetHost = json['targetHost'] as String;
+    baseUrl = json['baseUrl'] as String;
+    if (json['proxyUrls'] != null) {
+      proxyUrls = [];
+      json['proxyUrls'].forEach((v) {
+        proxyUrls.add(ProxyUrl.fromJson(v as Map<dynamic, dynamic>));
+      });
+    }
+  }
 }
 
 /// 代理URL信息
 class ProxyUrl {
   /// URL
-  final String url;
+  String url;
 
   /// 使用代理
-  final bool useProxy;
+  bool useProxy;
 
   /// 响应JSON
-  final String responseJson;
+  String responseJson;
 
-  const ProxyUrl({
+  ProxyUrl({
     this.url = '',
     this.useProxy = false,
     this.responseJson = '',
@@ -55,5 +63,11 @@ class ProxyUrl {
       useProxy: useProxy ?? this.useProxy,
       responseJson: responseJson ?? this.responseJson,
     );
+  }
+
+  ProxyUrl.fromJson(Map<dynamic, dynamic> json) {
+    url = json['url'] as String;
+    useProxy = json['useProxy'] as bool;
+    responseJson = json['responseJson'] as String;
   }
 }
