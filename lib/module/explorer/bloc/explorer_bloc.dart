@@ -29,7 +29,7 @@ class ExplorerBloc extends Bloc<ExplorerEvent, ExplorerState> {
           await service.explorer(nowState.view);
       yield resultState;
     }
-    // 展开收起
+    // 展开折叠
     if (event is ExplorerExpandEvent) {
       final ExplorerDoneState nowState = state as ExplorerDoneState;
       final ExplorerDoneState resultState =

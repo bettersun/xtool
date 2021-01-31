@@ -10,4 +10,6 @@ class ThemeConst {
   static const double len3 = 12.0;
   static const double len4 = 16.0;
   static const double len5 = 20.0;
+
+  static const double paddingNodeLeft = 8.0;
 }

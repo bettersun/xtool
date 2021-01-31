@@ -17,7 +17,7 @@ class ExplorerExplorerEvent extends ExplorerEvent {
   String toString() => 'ExplorerExplorerEvent';
 }
 
-/// 展开收起Event
+/// 展开折叠Event
 class ExplorerExpandEvent extends ExplorerEvent {
   /// 树节点View
   final TreeNodeView nodeView;

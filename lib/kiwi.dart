@@ -4,8 +4,6 @@ import 'module/app/service/app_service.dart';
 import 'module/app/service/app_service_impl.dart';
 import 'module/explorer/service/explorer_service.dart';
 import 'module/explorer/service/explorer_service_impl.dart';
-import 'module/proxy/service/proxy_service.dart';
-import 'module/proxy/service/proxy_service_impl.dart';
 import 'module/search/service/search_service.dart';
 import 'module/search/service/search_service_impl.dart';
 
@@ -20,7 +18,5 @@ class Kiwi {
     container.registerFactory<ExplorerService>((c) => ExplorerServiceImpl());
     // 搜索
     container.registerFactory<SearchService>((c) => SearchServiceImpl());
-    // 代理
-    container.registerFactory<ProxyService>((c) => ProxyServiceImpl());
   }
 }

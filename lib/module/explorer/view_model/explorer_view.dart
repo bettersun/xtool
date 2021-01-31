@@ -4,10 +4,11 @@ import 'vm.dart';
 
 /// 浏览View
 class ExplorerView extends Equatable {
-  // 树节点View(原始目录树)
+  // 树节点View(原始树View)
   final TreeNodeView origTreeView;
 
-  // 树节点View列表
+  // 树节点View列表(画面表示用)
+  //  画面上使用列表和缩进来表现树
   final List<TreeNodeView> treeNodeViewList;
 
   @override

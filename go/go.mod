@@ -20,3 +20,5 @@ replace github.com/bettersun/go-flutter-plugin/moist => ./plugin/moist
 replace github.com/bettersun/go-flutter-plugin/moist/proxy => ./plugin/proxy
 
 replace github.com/bettersun/go-flutter-plugin/xlsx => ./plugin/xlsx
+
+replace github.com/bettersun/moist v0.0.5 => /Users/sunjiashu/Documents/Develop/github.com/bettersun/moist

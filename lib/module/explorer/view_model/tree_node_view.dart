@@ -17,7 +17,7 @@ class TreeNodeView extends Equatable {
   /// 完整路径
   final String path;
 
-  /// 子目录里的目录或文件
+  /// 子节点的目录或文件
   final List<TreeNodeView> children;
 
   /// 深度
@@ -38,8 +38,11 @@ class TreeNodeView extends Equatable {
   /// 选中
   final bool isSelected;
 
-  /// 可见
+  /// 可见标志
   final bool visible;
+
+  /// 祖先可见标志
+  final bool ancestorVisible;
 
   @override
   List<Object> get props => [
@@ -56,6 +59,7 @@ class TreeNodeView extends Equatable {
         isExpanded,
         isSelected,
         visible,
+        ancestorVisible,
       ];
 
   const TreeNodeView({
@@ -72,6 +76,7 @@ class TreeNodeView extends Equatable {
     this.isExpanded = false,
     this.isSelected = false,
     this.visible = false,
+    this.ancestorVisible = false,
   });
 
   TreeNodeView copyWith({
@@ -88,6 +93,7 @@ class TreeNodeView extends Equatable {
     bool isExpanded,
     bool isSelected,
     bool visible,
+    bool ancestorVisible,
   }) {
     return TreeNodeView(
       id: id ?? this.id,
@@ -103,6 +109,7 @@ class TreeNodeView extends Equatable {
       isExpanded: isExpanded ?? this.isExpanded,
       isSelected: isSelected ?? this.isSelected,
       visible: visible ?? this.visible,
+      ancestorVisible: ancestorVisible ?? this.ancestorVisible,
     );
   }
 }

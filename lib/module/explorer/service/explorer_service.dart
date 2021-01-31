@@ -9,7 +9,9 @@ abstract class ExplorerService {
   /// 浏览
   Future<ExplorerDoneState> explorer(ExplorerView explorerView);
 
-  /// 展开收起
+  /// 展开折叠
+  ///  explorerView: 当前View
+  ///  nodeView: 选中的节点View
   Future<ExplorerDoneState> expand(
       ExplorerView explorerView, TreeNodeView nodeView);
 

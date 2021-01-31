@@ -53,6 +53,7 @@ class _AppPageState extends State<AppPage> {
             actions: acts,
           ),
           body: AppBody(state.view),
+          // body: Tree(),
           floatingActionButton: fabs,
         );
       }

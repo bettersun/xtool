@@ -83,20 +83,24 @@ class _ExplorerPageState extends State<ExplorerPage> {
                                   state.view.treeNodeViewList[i];
                               print(nodeView.name);
                               print(nodeView.visible);
-                              if (!nodeView.visible) {
+                              // 当前节点不可见或者祖先不可见
+                              if (!nodeView.visible ||
+                                  !nodeView.ancestorVisible) {
                                 return Container();
                               }
-                              // 缩进
+
+                              // 缩进 左边距 * 节点深度
                               final Container indent = Container(
                                   padding: EdgeInsets.only(
-                                      left: 8.0 * nodeView.deepth));
-                              // 展开收起
+                                      left: ThemeConst.paddingNodeLeft *
+                                          nodeView.deepth));
+                              // 图标: 展开折叠
                               final Widget iconExpanded =
                                   ExplorerUtil.expandIconType(nodeView);
-                              // 图标
+                              // 图标: 目录（文件夹）
                               final Icon iconType =
                                   ExplorerUtil.iconType(nodeView);
-                              // 选择
+                              // 选中状态的背景色
                               final Color colorSelected = nodeView.isSelected
                                   ? Colors.blueGrey
                                   : Colors.transparent;
@@ -107,7 +111,7 @@ class _ExplorerPageState extends State<ExplorerPage> {
                                 child: Row(
                                   children: [
                                     indent,
-                                    // 展开收起
+                                    // 展开折叠
                                     InkWell(
                                         child: iconExpanded,
                                         onTap: () => {

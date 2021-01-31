@@ -35,6 +35,7 @@ class ExplorerUtil {
       isDir: node.isDir,
       deepth: deepth,
       children: childrenView,
+      ancestorVisible: true,
     );
 
     return view;
@@ -50,7 +51,7 @@ class ExplorerUtil {
       TreeNodeView treeNodeView = newView;
 
       if (newView.deepth == 1) {
-        treeNodeView = newView.copyWith(visible: true);
+        treeNodeView = newView.copyWith(visible: true, ancestorVisible: true);
       }
 
       treeNodeViewlist.add(treeNodeView);
@@ -73,26 +74,31 @@ class ExplorerUtil {
   ) {}
 
   /// 遍历树节点
+  ///   treeNodeView: 原始树View(所有的节点View)
+  ///   id: 节点ID
+  ///   targetNodeIdList: 目标节点ID列表
+  ///   isTarget: 目标节点标志
   static void traverseTreeNode(TreeNodeView treeNodeView, String id,
       List<String> targetNodeIdList, bool isTarget) {
-    //
+    // 节点View的ID和id相等的情况，目标节点标志设为true。
     if (treeNodeView.id == id) {
       isTarget = true;
     }
 
-    //
+    // 如果是目标节点，则把节点View的id添加到目标节点ID列表
     if (isTarget) {
       targetNodeIdList.add(treeNodeView.id);
     }
 
+    // 原始树View的所有子节点View
     for (int i = 0; i < treeNodeView.children.length; i++) {
-      //
+      // 递归找出所有目标节点ID
       final TreeNodeView tmpView = treeNodeView.children[i];
       traverseTreeNode(tmpView, id, targetNodeIdList, isTarget);
     }
   }
 
-  ///
+  /// 根据 ID 查找节点 View
   static TreeNodeView find(List<TreeNodeView> treeNodeViewlist, String id) {
     for (int i = 0; i < treeNodeViewlist.length; i++) {
       final TreeNodeView treeNodeView = treeNodeViewlist[i];
@@ -100,10 +106,12 @@ class ExplorerUtil {
         return treeNodeView;
       }
     }
+
     return null;
   }
 
   /// 反向遍历，未完成
+  /// TODO 查找所有祖先节点
   static void traverseBack(List<TreeNodeView> treeNodeViewList,
       TreeNodeView treeNodeView, bool isAllExpanded) {
     //
@@ -120,9 +128,11 @@ class ExplorerUtil {
         }
       }
     }
+
+    return null;
   }
 
-  /// 展开类型
+  /// 图标: 展开折叠
   static Widget expandIconType(TreeNodeView nodeView) {
     Widget icon;
 
@@ -131,7 +141,7 @@ class ExplorerUtil {
 
     // 目录
     if (nodeView.isDir) {
-      // 展开收起
+      // 展开折叠
       if (nodeView.isExpanded) {
         icon = Icon(Icons.arrow_drop_down, size: size, color: colorDir);
       } else {
@@ -149,7 +159,7 @@ class ExplorerUtil {
     return icon;
   }
 
-  /// 图标类型
+  /// 图标: 目录（文件夹）
   static Icon iconType(TreeNodeView nodeView) {
     Icon icon;
 
@@ -159,7 +169,7 @@ class ExplorerUtil {
 
     // 目录
     if (nodeView.isDir) {
-      // 展开收起
+      // 展开折叠
       if (nodeView.isExpanded) {
         icon = Icon(Icons.folder_open, size: size, color: colorDir);
       } else {
